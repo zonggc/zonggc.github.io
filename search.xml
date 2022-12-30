@@ -134,7 +134,7 @@
 </ul>
 <p>复制 <code>hexo_deploy_key</code> 文件内容，在 <code>my-blog</code> 仓库 <code>Settings</code> -&gt; <code>Secrets</code> -&gt; <code>actions</code> -&gt; <code>New repository secret</code> 页面上添加。</p>
 <ol>
-<li>在 <code>Name</code> 输入框填写 <code>hexo_deploy_key</code></li>
+<li>在 <code>Name</code> 输入框填写 <code>HEXO_DEPLOY_KEY</code></li>
 <li>在 <code>Value</code> 输入框填写 <code>hexo_deploy_key</code> 文件内容</li>
 </ol>
 <img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-2.png" style="zoom:60%;">
@@ -144,7 +144,7 @@
 </ul>
 <p>复制 <code>hexo_deploy_key.pub</code> 文件内容，在 <code>xxx.github.io</code> 仓库 <code>Settings -&gt; Deploy keys -&gt; Add deploy key</code> 页面上添加。</p>
 <ol>
-<li>在 <code>Title</code> 输入框填写 <code>hexo_deploy_key_pub</code></li>
+<li>在 <code>Title</code> 输入框填写 <code>HEXO_DEPLOY_KEY_PUB</code></li>
 <li>在 <code>Key</code> 输入框填写 <code>hexo_deploy_key.pub</code> 文件内容</li>
 <li>勾选 <code>Allow write access</code> 选项</li>
 </ol>
@@ -156,10 +156,14 @@
 <li>编写 <code>workflows</code> 部署文件</li>
 </ul>
 <p>在 Hexo 源文件夹中新建一个文件 <code>.github/workflows/deploy.yml</code>，我的配置如下：</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
 <ul>
 <li>上传源代码 </li>
 </ul>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将 blog 目录变成 git 可以管理的仓库</span></span><br><span class="line">git init</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把文件添加到版本库中</span></span><br><span class="line">git add .</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把文件提交到仓库。引号内为提交注释</span></span><br><span class="line">git commit -m '第一次提交'</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关联到远程库</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx-blog.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或者</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git remote add origin git@github.com:xxx/xxx-blog.git</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把本地库的内容推送到远程</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 第一次使用加上了-u参数，是推送内容并关联分支。</span></span></span><br><span class="line">git push -u origin main</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下次直接提交</span></span><br><span class="line">git push origin main</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制更新</span></span><br><span class="line">git push -f origin main</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在mylog 根目录下 初始化git仓库</span></span><br><span class="line">git init</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置忽略文件</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新建 .gitignore文件 根.git同级</span></span><br><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把文件添加到仓库中</span></span><br><span class="line">git add .</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关联到远程库</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx-blog.git</span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将add的文件commit到仓库</span></span><br><span class="line">git commit -m '初始化 博客源码仓库'</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">由于使用了 main 分支，而 init 默认是 master 分支</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所以先切换分支</span></span><br><span class="line">git fetch</span><br><span class="line">git checkout -b main</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉去最新代码 会有一个README.md 文件</span></span><br><span class="line">git pull origin main --allow-unrelated-histories</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">提交代码</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git push origin main</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制更新</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git push -f origin main</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
       <categories>
@@ -184,6 +188,40 @@
       <tags>
         <tag>k8s</tag>
         <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 部署 Gitee pages</title>
+    <url>/hexo/deploy/blog/hexo/deploy/deploy-gitee/</url>
+    <content><![CDATA[<blockquote>
+<p>待补充。。。</p>
+</blockquote>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>hexo</category>
+        <category>deploy</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 部署 Github pages</title>
+    <url>/hexo/deploy/blog/hexo/deploy/deploy-github/</url>
+    <content><![CDATA[<blockquote>
+<p>待补充。。。</p>
+</blockquote>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>hexo</category>
+        <category>deploy</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -314,40 +352,6 @@
 <p>新建文章</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">hexo new post hello-word</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如过要生成多级目录</span></span><br><span class="line">hexo new post “hexo 部署” -p blog/hexo/deploy/deploy</span><br></pre></td></tr></tbody></table></figure>
 
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>deploy</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 部署 Github pages</title>
-    <url>/hexo/deploy/blog/hexo/deploy/deploy-github/</url>
-    <content><![CDATA[<blockquote>
-<p>待补充。。。</p>
-</blockquote>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>deploy</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 部署 Gitee pages</title>
-    <url>/hexo/deploy/blog/hexo/deploy/deploy-gitee/</url>
-    <content><![CDATA[<blockquote>
-<p>待补充。。。</p>
-</blockquote>
-<span id="more"></span>
 ]]></content>
       <categories>
         <category>hexo</category>
