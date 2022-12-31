@@ -20,34 +20,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zonggc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zonggc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Hexo 集成 GitHub Actions 自动部署 GitHub Actions  workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。 job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。 step（步骤）：每个 job 由多个 step 构成，一步步完成。 一个工作中的每个步骤都在相同的虚拟环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 集成 GitHub Actions 自动部署">
-<meta property="og:url" content="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/index.html">
+<meta property="og:url" content="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/index.html">
 <meta property="og:site_name" content="无敌的帽子">
 <meta property="og:description" content="Hexo 集成 GitHub Actions 自动部署 GitHub Actions  workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。 job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。 step（步骤）：每个 job 由多个 step 构成，一步步完成。 一个工作中的每个步骤都在相同的虚拟环境">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-1.png">
-<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-3.png">
-<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-2.png">
-<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-4.png">
+<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-1.png">
+<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-3.png">
+<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-2.png">
+<meta property="og:image" content="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-4.png">
 <meta property="article:published_time" content="2022-12-28T14:57:47.000Z">
-<meta property="article:modified_time" content="2022-12-31T13:45:46.603Z">
+<meta property="article:modified_time" content="2022-12-31T15:48:15.284Z">
 <meta property="article:author" content="zonggc">
 <meta property="article:tag" content="博客">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="GitHub Actions">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-1.png">
+<meta name="twitter:image" content="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-1.png">
 
 
-<link rel="canonical" href="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/">
+<link rel="canonical" href="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/","path":"hexo/blog/hexo/hexo-gitHub-actions/","title":"Hexo 集成 GitHub Actions 自动部署"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/","path":"hexo/blog/hexo/deploy/hexo-gitHub-actions/","title":"Hexo 集成 GitHub Actions 自动部署"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Hexo 集成 GitHub Actions 自动部署 | 无敌的帽子</title>
@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -217,7 +217,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zonggc.github.io/hexo/blog/hexo/hexo-gitHub-actions/">
+    <link itemprop="mainEntityOfPage" href="https://zonggc.github.io/hexo/blog/hexo/deploy/hexo-gitHub-actions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/43042779?v=4">
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-31 21:45:46" itemprop="dateModified" datetime="2022-12-31T21:45:46+08:00">2022-12-31</time>
+      <time title="修改时间：2022-12-31 23:48:15" itemprop="dateModified" datetime="2022-12-31T23:48:15+08:00">2022-12-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -312,7 +312,7 @@
 <li>提前准备 <code>xxx.github.io</code> <code>public</code> 仓库用来存放静态博客页面。</li>
 <li>创建 <code>my-blog</code> <code>私有</code>仓库用来存放博客源代码。</li>
 </ol>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-1.png" style="zoom:60%;">
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-1.png" style="zoom:60%;">
 
 <h3 id="配置密钥"><a href="#配置密钥" class="headerlink" title="配置密钥"></a>配置密钥</h3><blockquote>
 <p>为什么要用 SSH Key？<br>SSH Key，是一对密匙：公钥 + 私钥，用于加密本地仓库和远程仓库的传输内容。是非对称加密，可公钥加密、私钥解密；或私钥加密、公钥解密。<br>使用 GitHub Actions 是借助 GitHub 提供的环境，跟本地环境一样，也需要有私钥。当 GitHub Action 执行 hexo g -d 时，用私钥 DEPLOY_KEY 加密，GitHub 用网站文件仓库的 Deploy Key 进行验证。</p>
@@ -320,7 +320,7 @@
 <h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><blockquote>
 <p>注：邮箱 <code>C:\Users\用户名\.gitconfig</code> 中可以查看，如图：</p>
 </blockquote>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-3.png" style="zoom:80%;">
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-3.png" style="zoom:80%;">
 
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -f hexo_deploy_key -C "xxxx@xx.com"</span><br></pre></td></tr></tbody></table></figure>
 
@@ -329,7 +329,7 @@
 <li>在 <code>Name</code> 输入框填写 <code>HEXO_DEPLOY_KEY</code></li>
 <li>在 <code>Value</code> 输入框填写 <code>hexo_deploy_key</code> 文件内容</li>
 </ol>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-2.png" style="zoom:60%;">
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-2.png" style="zoom:60%;">
 
 <h4 id="配置公钥"><a href="#配置公钥" class="headerlink" title="配置公钥"></a>配置公钥</h4><p>复制 <code>hexo_deploy_key.pub</code> 文件内容，在 <code>xxx.github.io</code> 仓库 <code>Settings -&gt; Deploy keys -&gt; Add deploy key</code> 页面上添加。</p>
 <ol>
@@ -337,7 +337,7 @@
 <li>在 <code>Key</code> 输入框填写 <code>hexo_deploy_key.pub</code> 文件内容</li>
 <li>勾选 <code>Allow write access</code> 选项</li>
 </ol>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-4.png" style="zoom:60%;">
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-4.png" style="zoom:60%;">
 
 
 
@@ -382,8 +382,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/hexo/theme/next/blog/hexo/theme/next/next-deploy/" rel="prev" title="Hexo NexT 主题部署">
-                  <i class="fa fa-chevron-left"></i> Hexo NexT 主题部署
+                <a href="/hexo/theme/next/blog/hexo/theme/next/next-deploy/" rel="prev" title="Hexo NexT 主题部署及配置">
+                  <i class="fa fa-chevron-left"></i> Hexo NexT 主题部署及配置
                 </a>
             </div>
             <div class="post-nav-item">
@@ -398,6 +398,7 @@
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -419,14 +420,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">15 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -488,6 +489,10 @@
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"zonggc","repo":"zonggc.github.io","client_id":"97b96596ac71d14bd661","client_secret":"82b726b03aa6d92801502a51a56abb70236c25cb","admin_user":"zonggc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f6b045c7c8a06a57f776138cc5026e1c"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

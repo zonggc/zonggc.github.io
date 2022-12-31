@@ -50,133 +50,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo 配置</title>
-    <url>/hexo/blog/hexo/hexo-config/</url>
-    <content><![CDATA[<p>Nexo 常用功能配置</p>
-<span id="more"></span>
-
-<ul>
-<li>Hexo: 6.3.0</li>
-</ul>
-<hr>
-<h3 id="🌟Hexo插入图片"><a href="#🌟Hexo插入图片" class="headerlink" title="🌟Hexo插入图片"></a>🌟Hexo 插入图片</h3><p>在 hexo 中使用<strong>文章资源文件夹</strong>需要在 <code>config.yaml</code> 文件中更改一下配置：</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>安装 <code>hexo-asset-image</code> 插件</p>
-<blockquote>
-<p>安装完成后，再运行 <code>hexo new “标题” title</code> 来生成 md 博文时，/source/_posts 文件夹内除了 title.md 文件还有一个同名的文件夹<br>注意：不要使用 <code>npm install hexo-asset-image –save</code> 这个插件，如果使用了也可以修改 参考：<a href="https://zhuanlan.zhihu.com/p/542101567">Hexo 图片插入无法显示的问题 - 知乎 (zhihu.com)</a></p>
-</blockquote>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在 **.md** 中引入图片时，先把图片复制到 <code>title</code> 这个文件夹中，然后只需要在 title.md 中按照 markdown 的格式引入图片</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">![<span class="string">文字</span>](<span class="link">title/123.jpg</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟本地搜索"><a href="#🌟本地搜索" class="headerlink" title="🌟本地搜索"></a>🌟本地搜索</h3><p>安装插件 <code>hexo-generator-searchdb</code></p>
-<figure class="highlight ada"><table><tbody><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>修改站点配置文件<code>_config.yml</code>，新增以下内容</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Local earch</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>在主题配置文件<code>_config.yml</code> 搜索 <code>local_search</code></p>
-</blockquote>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">#如果自动，则通过更改输入触发搜索。</span></span><br><span class="line">  <span class="comment">#如果手动，则按回车键或搜索按钮触发搜索。</span></span><br><span class="line">  <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">  <span class="comment">#显示每篇文章的前n个结果，通过设置为-1显示所有结果</span></span><br><span class="line">  <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment">#将html字符串转换为可读字符串。</span></span><br><span class="line">  <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># 加载页面时预加载搜索数据。</span></span><br><span class="line">  <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟添加首页置顶及调整分页"><a href="#🌟添加首页置顶及调整分页" class="headerlink" title="🌟添加首页置顶及调整分页"></a>🌟添加首页置顶及调整分页</h3><p>安装插件</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>在主题配置文件<code>_config.yml</code> 搜索 <code>index_generator</code></p>
-<ul>
-<li><code>path</code>：文章起始页面路径</li>
-<li><code>per_page</code>：每页显示文章数量</li>
-<li><code>order_by</code>：排序（默认按日期降序）</li>
-</ul>
-</blockquote>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Home page setting</span></span><br><span class="line"><span class="comment"># path: Root path for your blogs index page. (default = '')</span></span><br><span class="line"><span class="comment"># per_page: Posts displayed per page. (0 = disable pagination)</span></span><br><span class="line"><span class="comment"># order_by: Posts order. (Order by date descending by default)</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">""</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">7</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>在文章的 <code>Front Matter</code> 中添加参数 <a href="https://theme-next.js.org/docs/advanced-settings/front-matter.html?highlight=hexo+generator+index">sticky</a> 即可实现首页置顶，数字越大排序越高（<em>升序排序</em>）</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">主页</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-12-24 17:10:00</span></span><br><span class="line"><span class="attr">abbrlink:</span> <span class="number">51450</span></span><br><span class="line"><span class="attr">sticky:</span> <span class="number">99999</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></tbody></table></figure>
-
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 集成 GitHub Actions 自动部署</title>
-    <url>/hexo/blog/hexo/hexo-gitHub-actions/</url>
-    <content><![CDATA[<p>Hexo 集成 GitHub Actions 自动部署</p>
-<p>GitHub Actions</p>
-<ol>
-<li><strong>workflow</strong> （工作流程）：持续集成一次运行的过程，就是一个 workflow。</li>
-<li><strong>job</strong> （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。</li>
-<li><strong>step</strong>（步骤）：每个 job 由多个 step 构成，一步步完成。 一个工作中的每个步骤都在相同的虚拟环境中执行，从而允许使用文件系统共享信息。</li>
-<li><strong>action</strong> （动作）：每个 step 可以依次执行一个或多个命令（action）。 你可以创建自己的 action、使用 GitHub 社区共享的 action。</li>
-</ol>
-<span id="more"></span>
-
-<p>参考：<a href="http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html">GitHub Actions 入门教程 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
-<h3 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h3><ol>
-<li>提前准备 <code>xxx.github.io</code> <code>public</code> 仓库用来存放静态博客页面。</li>
-<li>创建 <code>my-blog</code> <code>私有</code>仓库用来存放博客源代码。</li>
-</ol>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-1.png" style="zoom:60%;">
-
-<h3 id="配置密钥"><a href="#配置密钥" class="headerlink" title="配置密钥"></a>配置密钥</h3><blockquote>
-<p>为什么要用 SSH Key？<br>SSH Key，是一对密匙：公钥 + 私钥，用于加密本地仓库和远程仓库的传输内容。是非对称加密，可公钥加密、私钥解密；或私钥加密、公钥解密。<br>使用 GitHub Actions 是借助 GitHub 提供的环境，跟本地环境一样，也需要有私钥。当 GitHub Action 执行 hexo g -d 时，用私钥 DEPLOY_KEY 加密，GitHub 用网站文件仓库的 Deploy Key 进行验证。</p>
-</blockquote>
-<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><blockquote>
-<p>注：邮箱 <code>C:\Users\用户名\.gitconfig</code> 中可以查看，如图：</p>
-</blockquote>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-3.png" style="zoom:80%;">
-
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -f hexo_deploy_key -C "xxxx@xx.com"</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="配置私钥"><a href="#配置私钥" class="headerlink" title="配置私钥"></a>配置私钥</h4><p>复制 <code>hexo_deploy_key</code> 文件内容，在 <code>my-blog</code> 仓库 <code>Settings</code> -&gt; <code>Secrets</code> -&gt; <code>actions</code> -&gt; <code>New repository secret</code> 页面上添加。</p>
-<ol>
-<li>在 <code>Name</code> 输入框填写 <code>HEXO_DEPLOY_KEY</code></li>
-<li>在 <code>Value</code> 输入框填写 <code>hexo_deploy_key</code> 文件内容</li>
-</ol>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-2.png" style="zoom:60%;">
-
-<h4 id="配置公钥"><a href="#配置公钥" class="headerlink" title="配置公钥"></a>配置公钥</h4><p>复制 <code>hexo_deploy_key.pub</code> 文件内容，在 <code>xxx.github.io</code> 仓库 <code>Settings -&gt; Deploy keys -&gt; Add deploy key</code> 页面上添加。</p>
-<ol>
-<li>在 <code>Title</code> 输入框填写 <code>HEXO_DEPLOY_KEY_PUB</code></li>
-<li>在 <code>Key</code> 输入框填写 <code>hexo_deploy_key.pub</code> 文件内容</li>
-<li>勾选 <code>Allow write access</code> 选项</li>
-</ol>
-<img src="/hexo/blog/hexo/hexo-gitHub-actions/hexo-gitHub-actions-4.png" style="zoom:60%;">
-
-
-
-<h3 id="修改站点配置文件"><a href="#修改站点配置文件" class="headerlink" title="修改站点配置文件"></a>修改站点配置文件</h3><blockquote>
-<p>注：github action 无法访问 github.io 仓库的权限问题，<br>在 hexo 的_config.yml 文件中将部署的 https 地址改为 ssh 地址，才能使用 RSA 密钥进行部署。</p>
-</blockquote>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">"git"</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">git@github.com:zonggc/zonggc.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="编写-workflows-部署文件"><a href="#编写-workflows-部署文件" class="headerlink" title="编写 workflows 部署文件"></a>编写 <code>workflows</code> 部署文件</h3><p>在 Hexo 源文件夹中新建一个文件 <code>.github/workflows/deploy.yml</code>，我的配置如下：</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Action 的名字</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">Auto</span> <span class="string">Deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="comment"># 使用此 git 用户部署到 github 仓库</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">zonggc</span></span><br><span class="line">  <span class="comment"># 使用此 git 邮箱部署到 github 仓库</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="number">1635145970</span><span class="string">@qq.com</span></span><br><span class="line">  <span class="comment"># 要部署到的分支</span></span><br><span class="line">  <span class="attr">GIT_DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="comment"># name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">检查分支</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$GIT_DEPLOY_BRANCH</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment"># 安装 node.js</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装</span> <span class="string">Node.js</span> <span class="string">${{</span> <span class="string">matrix.node_version</span> <span class="string">}}</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">${{</span> <span class="string">matrix.node_version</span> <span class="string">}}</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment"># 配置环境</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">配置环境</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="comment"># 配置的私钥标题 </span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_KEY:</span> <span class="string">${{secrets.HEXO_DEPLOY_KEY}}</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone "Asia/Shanghai"</span></span><br><span class="line"><span class="string">          mkdir -p ~/.ssh/</span></span><br><span class="line"><span class="string">          echo "$HEXO_DEPLOY_KEY" &gt; ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          chmod 600 ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts</span></span><br><span class="line"><span class="string">          git config --global user.name $GIT_USER</span></span><br><span class="line"><span class="string">          git config --global user.email $GIT_EMAIL</span></span><br><span class="line"><span class="string"></span>      </span><br><span class="line">      <span class="comment"># 安装依赖</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装依赖</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install hexo-cli -g</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="comment"># 克隆 Hexo 静态资源库</span></span><br><span class="line">      <span class="comment"># clone博客静态文件仓库，防止Hexo推送时覆盖整个静态文件仓库，而是只推送有更改的文件</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">克隆</span> <span class="string">Hexo</span> <span class="string">静态资源库</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          git clone https://github.com/zonggc/zonggc.github.io.git .deploy_git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="comment"># 部署</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">部署</span> <span class="string">Hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">| </span></span><br><span class="line"><span class="string">          hexo clean</span></span><br><span class="line"><span class="string">          hexo generate</span></span><br><span class="line"><span class="string">          hexo deploy</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="上传源代码自动部署"><a href="#上传源代码自动部署" class="headerlink" title="上传源代码自动部署"></a>上传源代码自动部署</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在mylog 根目录下 初始化git仓库</span></span><br><span class="line">git init</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置忽略文件</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新建 .gitignore文件 根.git同级</span></span><br><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把文件添加到仓库中</span></span><br><span class="line">git add .</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关联到远程库</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx-blog.git</span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将add的文件commit到仓库</span></span><br><span class="line">git commit -m '初始化 博客源码仓库'</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">由于使用了 main 分支，而 init 默认是 master 分支</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所以先切换分支</span></span><br><span class="line">git fetch</span><br><span class="line">git checkout -b main</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉去最新代码 会有一个README.md 文件</span></span><br><span class="line">git pull origin main --allow-unrelated-histories</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">提交代码</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git push origin main</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制更新</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git push -f origin main</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>hexo</tag>
-        <tag>GitHub Actions</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>kubernetes-1.24 集群部署</title>
     <url>/kubernetes/kubernetes/deploy/cluster-deploy-1.24.4/</url>
     <content><![CDATA[<p>kubernetes-1.24 版本集群部署</p>
@@ -192,49 +65,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo 部署 Gitee pages</title>
-    <url>/hexo/deploy/blog/hexo/deploy/deploy-gitee/</url>
-    <content><![CDATA[<blockquote>
-<p>待补充。。。</p>
-</blockquote>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>deploy</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 部署 Github pages</title>
-    <url>/hexo/deploy/blog/hexo/deploy/deploy-github/</url>
-    <content><![CDATA[<blockquote>
-<p>待补充。。。</p>
-</blockquote>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>deploy</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo 部署</title>
-    <url>/hexo/deploy/blog/hexo/deploy/deploy/</url>
+    <title>Hexo 部署及配置</title>
+    <url>/hexo/deploy/blog/hexo/deploy/hexo-deploy/</url>
     <content><![CDATA[<p>Nexo 搭建，部署，添加界面，添加文章等功能配置</p>
 <span id="more"></span>
 
+<ul>
+<li>Hexo: 6.3.0</li>
+</ul>
+<hr>
 <h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><blockquote>
 <p>待补充。。。</p>
 </blockquote>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><ul>
+<h3 id="概念说明"><a href="#概念说明" class="headerlink" title="概念说明"></a>概念说明</h3><h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><ul>
 <li><p><strong>public</strong> 目录是 Hexo 框架根据源文件产生的静态网站文件，部署时，需要将 <strong>public</strong> 目录中的所有内容上传到网站。</p>
 </li>
 <li><p><strong>source</strong> 目录用户资源文件，是项目的根文件 / ，所有文章、页面、图片、音视频等资源都放在该目录下，应用该目录下的文件，文件路径从根目录 / 开始。</p>
@@ -242,7 +85,7 @@
 <li><p><strong>scaffolds</strong> 目录存放模版文件，当新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
 </li>
 </ul>
-<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><blockquote>
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><blockquote>
 <p>Hexo 有三种默认布局（模版）：<code>post</code>、<code>page</code> 和 <code>draft</code>。在创建这三种不同类型的文件时，它们将会被保存到不同的路径；自定义的其他布局和 <code>post</code> 相同，都将储存到 <code>source/_posts</code> 文件夹。</p>
 </blockquote>
 <table>
@@ -265,13 +108,13 @@
 <td>source/_drafts</td>
 </tr>
 </tbody></table>
-<h3 id="front-matter参数"><a href="#front-matter参数" class="headerlink" title="front-matter参数"></a>front-matter 参数</h3><blockquote>
-<p>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量<br>以下是预先定义的参数，可在模板中使用这些参数值并加以利用</p>
+<h4 id="front-matter参数"><a href="#front-matter参数" class="headerlink" title="front-matter参数"></a>front-matter 参数</h4><blockquote>
+<p>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量<br>以下是预先定义的参数，可在模板中使用这些参数值并加以利用<br>参考：<a href="https://hexo.io/zh-cn/docs/front-matter">Front-matter | Hexo</a></p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>参数</th>
+<th> 参数</th>
 <th>描述</th>
 <th>默认值</th>
 </tr>
@@ -327,14 +170,12 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><blockquote>
-<p>front-matter 参数中</p>
+<h3 id="配置及优化"><a href="#配置及优化" class="headerlink" title="配置及优化"></a>配置及优化</h3><h4 id="文章添加分类"><a href="#文章添加分类" class="headerlink" title="文章添加分类"></a>文章添加分类</h4><blockquote>
+<p>front-matter 参数中<br>参考：<a href="https://hexo.io/zh-cn/docs/front-matter.html#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE">分类和标签 Front-matter | Hexo</a></p>
 </blockquote>
 <figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> [<span class="string">hexo</span>,<span class="string">theme</span>,<span class="string">next</span>]</span><br></pre></td></tr></tbody></table></figure>
 
-
-
-<h3 id="新建标签、分类等页面及文章"><a href="#新建标签、分类等页面及文章" class="headerlink" title="新建标签、分类等页面及文章"></a>新建标签、分类等页面及文章</h3><p>下列命令来创建一篇新文章或者新的页面</p>
+<h4 id="新建标签、分类"><a href="#新建标签、分类" class="headerlink" title="新建标签、分类"></a>新建标签、分类</h4><p>下列命令来创建一篇新文章或者新的页面</p>
 <blockquote>
 <p>可以在命令中指定文章的布局（layout），默认为 <code>post</code>，可以通过修改 <code>_config.yml</code> 中的 <code>default_layout</code> 参数来指定默认布局。</p>
 </blockquote>
@@ -345,13 +186,42 @@
 <p>在主题配置文件 如：next 主题 /next/_config.yml 中打开对应注释</p>
 </blockquote>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">hexo new page categories</span><br><span class="line">hexo new page tags</span><br><span class="line">hexo new page about</span><br><span class="line">hexo new page archives</span><br><span class="line">hexo new page sitemap</span><br><span class="line">hexo new page schedule</span><br></pre></td></tr></tbody></table></figure>
+
 <blockquote>
 <p>主题配置文件中添加菜单，一般主题都内置了只需要打开对应注释即可</p>
 </blockquote>
 <figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>新建文章</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">hexo new post hello-word</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如过要生成多级目录</span></span><br><span class="line">hexo new post “hexo 部署” -p blog/hexo/deploy/deploy</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">hexo new post hello-word</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如过要生成多级目录</span></span><br><span class="line">hexo new post “hexo 部署” -p blog/hexo/deploy/deploy</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>在 hexo 中使用<strong>文章资源文件夹</strong>需要在 <code>config.yaml</code> 文件中更改一下配置：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装 <code>hexo-asset-image</code> 插件</p>
+<blockquote>
+<p>安装完成后，再运行 <code>hexo new “标题” title</code> 来生成 md 博文时，/source/_posts 文件夹内除了 title.md 文件还有一个同名的文件夹<br>注意：不要使用 <code>npm install hexo-asset-image –save</code> 这个插件，如果使用了也可以修改 参考：<a href="https://zhuanlan.zhihu.com/p/542101567">Hexo 图片插入无法显示的问题 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在 **.md** 中引入图片时，先把图片复制到 <code>title</code> 这个文件夹中，然后只需要在 title.md 中按照 markdown 的格式引入图片</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">![<span class="string">文字</span>](<span class="link">title/123.jpg</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="首页置顶及调整分页"><a href="#首页置顶及调整分页" class="headerlink" title="首页置顶及调整分页"></a>首页置顶及调整分页</h4><p>安装插件</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>在主题配置文件<code>_config.yml</code> 搜索 <code>index_generator</code></p>
+<ul>
+<li><code>path</code>：文章起始页面路径</li>
+<li><code>per_page</code>：每页显示文章数量</li>
+<li><code>order_by</code>：排序（默认按日期降序）</li>
+</ul>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Home page setting</span></span><br><span class="line"><span class="comment"># path: Root path for your blogs index page. (default = '')</span></span><br><span class="line"><span class="comment"># per_page: Posts displayed per page. (0 = disable pagination)</span></span><br><span class="line"><span class="comment"># order_by: Posts order. (Order by date descending by default)</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">""</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">7</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>在文章的 <code>Front Matter</code> 中添加参数 <a href="https://theme-next.js.org/docs/advanced-settings/front-matter.html?highlight=hexo+generator+index">sticky</a> 即可实现首页置顶，数字越大排序越高（<em>升序排序</em>）</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">主页</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-12-24 17:10:00</span></span><br><span class="line"><span class="attr">abbrlink:</span> <span class="number">51450</span></span><br><span class="line"><span class="attr">sticky:</span> <span class="number">99999</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
       <categories>
@@ -364,145 +234,83 @@
       </tags>
   </entry>
   <entry>
-    <title>NexT 主题配置</title>
-    <url>/hexo/theme/next/blog/hexo/theme/next/next-config/</url>
-    <content><![CDATA[<p>NexT 主题功能添加及美化配置</p>
+    <title>Hexo 集成 GitHub Actions 自动部署</title>
+    <url>/hexo/blog/hexo/deploy/hexo-gitHub-actions/</url>
+    <content><![CDATA[<p>Hexo 集成 GitHub Actions 自动部署</p>
+<p>GitHub Actions</p>
+<ol>
+<li><strong>workflow</strong> （工作流程）：持续集成一次运行的过程，就是一个 workflow。</li>
+<li><strong>job</strong> （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。</li>
+<li><strong>step</strong>（步骤）：每个 job 由多个 step 构成，一步步完成。 一个工作中的每个步骤都在相同的虚拟环境中执行，从而允许使用文件系统共享信息。</li>
+<li><strong>action</strong> （动作）：每个 step 可以依次执行一个或多个命令（action）。 你可以创建自己的 action、使用 GitHub 社区共享的 action。</li>
+</ol>
 <span id="more"></span>
 
-<ul>
-<li>Hexo: 6.3.0</li>
-<li>NexT: 8.14.0</li>
-</ul>
-<p>参考网站：</p>
-<ul>
-<li><a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT</a></li>
-<li><a href="https://theme-next.js.org/docs/getting-started/">NexT (theme-next.js.org)</a></li>
-<li><a href="https://theme-next.js.org/highlight/">代码高亮 Highlight (theme-next.js.org)</a></li>
-</ul>
-<hr>
-<h3 id="🌟添加阅读全文"><a href="#🌟添加阅读全文" class="headerlink" title="🌟添加阅读全文"></a>🌟添加阅读全文</h3><p>NexT 提供三种方式来控制文章在首页的显示方式。 也就是说，在首页显示文章的摘录并显示 <strong>阅读全文</strong> 按钮，可以通过以下方法：</p>
-<ol>
-<li><p>在文章中使用 <code>&lt;!-- more --&gt;</code> 手动进行截断，Hexo 提供的方式 <strong>推荐</strong></p>
-</li>
-<li><p>在文章的 <a href="https://hexo.io/docs/front-matter.html">front-matter</a> 中添加 <code>description</code>，并提供文章摘录</p>
-</li>
-<li><p>自动形成摘要，在 <strong>主题配置文件</strong> 中添加：</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>默认截取的长度为 <code>150</code> 字符，可以根据需要自行设定</p>
-</li>
+<p>参考：<a href="http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html">GitHub Actions 入门教程 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
+<h3 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h3><ol>
+<li>提前准备 <code>xxx.github.io</code> <code>public</code> 仓库用来存放静态博客页面。</li>
+<li>创建 <code>my-blog</code> <code>私有</code>仓库用来存放博客源代码。</li>
 </ol>
-<blockquote>
-<p>建议使用 <code>&lt;!-- more --&gt;</code>（即第一种方式），除了可以精确控制需要显示的摘录内容以外， 这种方式也可以让 Hexo 中的插件更好的识别。</p>
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-1.png" style="zoom:60%;">
+
+<h3 id="配置密钥"><a href="#配置密钥" class="headerlink" title="配置密钥"></a>配置密钥</h3><blockquote>
+<p>为什么要用 SSH Key？<br>SSH Key，是一对密匙：公钥 + 私钥，用于加密本地仓库和远程仓库的传输内容。是非对称加密，可公钥加密、私钥解密；或私钥加密、公钥解密。<br>使用 GitHub Actions 是借助 GitHub 提供的环境，跟本地环境一样，也需要有私钥。当 GitHub Action 执行 hexo g -d 时，用私钥 DEPLOY_KEY 加密，GitHub 用网站文件仓库的 Deploy Key 进行验证。</p>
 </blockquote>
-<hr>
-<h3 id="🌟修改主题字体大小"><a href="#🌟修改主题字体大小" class="headerlink" title="🌟修改主题字体大小"></a>🌟修改主题字体大小</h3><ul>
-<li>自定义样式文件</li>
-<li> NexT 配置文件 打开自定义文件的路径</li>
-</ul>
-<blockquote>
-<p>参考：<a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html#Examples-of-Modifying-Style">自定义文件 | NexT (theme-next.js.org)</a></p>
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><blockquote>
+<p>注：邮箱 <code>C:\Users\用户名\.gitconfig</code> 中可以查看，如图：</p>
 </blockquote>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="attr">variable:</span> <span class="string">source/_data/variables.styl</span></span><br></pre></td></tr></tbody></table></figure>
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-3.png" style="zoom:80%;">
 
-<ul>
-<li>在站点根目录中创建和编辑并添加变量：<code>source/_data/variables.styl</code></li>
-</ul>
-<blockquote>
-<p>可以复制 <code>node_modules\hexo-theme-next\source\css\_variables\base.styl</code> 主题下的变量</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -f hexo_deploy_key -C "xxxx@xx.com"</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="配置私钥"><a href="#配置私钥" class="headerlink" title="配置私钥"></a>配置私钥</h4><p>复制 <code>hexo_deploy_key</code> 文件内容，在 <code>my-blog</code> 仓库 <code>Settings</code> -&gt; <code>Secrets</code> -&gt; <code>actions</code> -&gt; <code>New repository secret</code> 页面上添加。</p>
+<ol>
+<li>在 <code>Name</code> 输入框填写 <code>HEXO_DEPLOY_KEY</code></li>
+<li>在 <code>Value</code> 输入框填写 <code>hexo_deploy_key</code> 文件内容</li>
+</ol>
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-2.png" style="zoom:60%;">
+
+<h4 id="配置公钥"><a href="#配置公钥" class="headerlink" title="配置公钥"></a>配置公钥</h4><p>复制 <code>hexo_deploy_key.pub</code> 文件内容，在 <code>xxx.github.io</code> 仓库 <code>Settings -&gt; Deploy keys -&gt; Add deploy key</code> 页面上添加。</p>
+<ol>
+<li>在 <code>Title</code> 输入框填写 <code>HEXO_DEPLOY_KEY_PUB</code></li>
+<li>在 <code>Key</code> 输入框填写 <code>hexo_deploy_key.pub</code> 文件内容</li>
+<li>勾选 <code>Allow write access</code> 选项</li>
+</ol>
+<img src="/hexo/blog/hexo/deploy/hexo-gitHub-actions/hexo-gitHub-actions-4.png" style="zoom:60%;">
+
+
+
+<h3 id="修改站点配置文件"><a href="#修改站点配置文件" class="headerlink" title="修改站点配置文件"></a>修改站点配置文件</h3><blockquote>
+<p>注：github action 无法访问 github.io 仓库的权限问题，<br>在 hexo 的_config.yml 文件中将部署的 https 地址改为 ssh 地址，才能使用 RSA 密钥进行部署。</p>
 </blockquote>
-<figure class="highlight less"><table><tbody><tr><td class="code"><pre><span class="line">$<span class="selector-tag">font-size-large</span>          = <span class="number">1em</span>;</span><br><span class="line">$<span class="selector-tag">font-size-larger</span>         = <span class="number">1em</span>;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">"git"</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">git@github.com:zonggc/zonggc.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="编写-workflows-部署文件"><a href="#编写-workflows-部署文件" class="headerlink" title="编写 workflows 部署文件"></a>编写 <code>workflows</code> 部署文件</h3><p>在 Hexo 源文件夹中新建一个文件 <code>.github/workflows/deploy.yml</code>，我的配置如下：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Action 的名字</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">Auto</span> <span class="string">Deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="comment"># 使用此 git 用户部署到 github 仓库</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">zonggc</span></span><br><span class="line">  <span class="comment"># 使用此 git 邮箱部署到 github 仓库</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="number">1635145970</span><span class="string">@qq.com</span></span><br><span class="line">  <span class="comment"># 要部署到的分支</span></span><br><span class="line">  <span class="attr">GIT_DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="comment"># name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">检查分支</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$GIT_DEPLOY_BRANCH</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment"># 安装 node.js</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装</span> <span class="string">Node.js</span> <span class="string">${{</span> <span class="string">matrix.node_version</span> <span class="string">}}</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">${{</span> <span class="string">matrix.node_version</span> <span class="string">}}</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment"># 配置环境</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">配置环境</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="comment"># 配置的私钥标题 </span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_KEY:</span> <span class="string">${{secrets.HEXO_DEPLOY_KEY}}</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone "Asia/Shanghai"</span></span><br><span class="line"><span class="string">          mkdir -p ~/.ssh/</span></span><br><span class="line"><span class="string">          echo "$HEXO_DEPLOY_KEY" &gt; ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          chmod 600 ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts</span></span><br><span class="line"><span class="string">          git config --global user.name $GIT_USER</span></span><br><span class="line"><span class="string">          git config --global user.email $GIT_EMAIL</span></span><br><span class="line"><span class="string"></span>      </span><br><span class="line">      <span class="comment"># 安装依赖</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装依赖</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install hexo-cli -g</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="comment"># 克隆 Hexo 静态资源库</span></span><br><span class="line">      <span class="comment"># clone博客静态文件仓库，防止Hexo推送时覆盖整个静态文件仓库，而是只推送有更改的文件</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">克隆</span> <span class="string">Hexo</span> <span class="string">静态资源库</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          git clone https://github.com/zonggc/zonggc.github.io.git .deploy_git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="comment"># 部署</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">部署</span> <span class="string">Hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">| </span></span><br><span class="line"><span class="string">          hexo clean</span></span><br><span class="line"><span class="string">          hexo generate</span></span><br><span class="line"><span class="string">          hexo deploy</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="上传源代码自动部署"><a href="#上传源代码自动部署" class="headerlink" title="上传源代码自动部署"></a>上传源代码自动部署</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在mylog 根目录下 初始化git仓库</span></span><br><span class="line">git init</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置忽略文件</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新建 .gitignore文件 根.git同级</span></span><br><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把文件添加到仓库中</span></span><br><span class="line">git add .</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关联到远程库</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx-blog.git</span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将add的文件commit到仓库</span></span><br><span class="line">git commit -m '初始化 博客源码仓库'</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">由于使用了 main 分支，而 init 默认是 master 分支</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所以先切换分支</span></span><br><span class="line">git fetch</span><br><span class="line">git checkout -b main</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉去最新代码 会有一个README.md 文件</span></span><br><span class="line">git pull origin main --allow-unrelated-histories</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">提交代码</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git push origin main</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制更新</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">git push -f origin main</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
-<ul>
-<li>也可以 在主题配置文件<code>_config.yml</code> 文件中搜索 <code>font</code></li>
-<li>配置 <code>font.enable:true</code>, 配置 <code>xx.external:false</code> 要不然博客访问速度变慢 </li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">host:</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Lato</span></span><br><span class="line">    <span class="attr">size:</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟隐藏底部-由-Hexo-amp-NexT-Gemini-强力驱动-文字"><a href="#🌟隐藏底部-由-Hexo-amp-NexT-Gemini-强力驱动-文字" class="headerlink" title="🌟隐藏底部 由 Hexo &amp; NexT.Gemini 强力驱动 文字"></a>🌟隐藏底部 <code>由 Hexo &amp; NexT.Gemini 强力驱动</code> 文字</h3><ul>
-<li>在主题配置文件<code>_config.yml</code> 中搜索 <code>footer</code> 修改 <code>footer.powered</code> 值为 <code>false</code></li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="comment">#...</span></span><br><span class="line">  <span class="comment"># Powered by Hexo &amp; NexT</span></span><br><span class="line">  <span class="attr">powered:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟浏览进度"><a href="#🌟浏览进度" class="headerlink" title="🌟浏览进度"></a>🌟浏览进度</h3><ul>
-<li>在主题配置文件<code>_config.yml</code> 中搜索 <code>scrollpercent</code> 修改 <code>footer.powered</code> 值为 <code>false</code></li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="comment"># 启用回到顶部</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># true:sidebar 底部显示，</span></span><br><span class="line">  <span class="comment"># false: 右下角显示</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 开启浏览百分比标签</span></span><br><span class="line">  <span class="attr">scrollpercent:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟修改图标"><a href="#🌟修改图标" class="headerlink" title="🌟修改图标"></a>🌟修改图标</h3><ul>
-<li>准备一张（32 * 32）的 ico 图标，png 格式也可以，命名为 <code>favicon</code>。</li>
-<li>然后把图标放在 <code>/themes/hexo-theme-next/source/images</code> 里</li>
-<li>在主题配置文件<code>_config.yml</code> 中搜索 <code>favicon</code> 修改 <code>favicon.small</code> 和 <code>favicon.medium</code> 值为 <code>images/favicon.png</code></li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="comment">#small: /images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="comment">#medium: /images/favicon-32x32-next.png</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /images/manifest.json</span></span><br><span class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟修改标签的-为图标"><a href="#🌟修改标签的-为图标" class="headerlink" title="🌟修改标签的#为图标"></a>🌟修改标签的<code>#</code>为图标</h3><ul>
-<li>修改模板 <code>/themes/hexo-theme-next/layout/_macro/post.swig</code> 搜索 <code>rel="tag"</code> 如图：</li>
-<li>网上的教程大部分都是让替换 <code>rel="tag"&gt;#</code> 但其实新版本已经支持了，如图就是新版本的代码，</li>
-<li>只需要在主题配置文件<code>_config.yml</code> 中搜索 <code>tag_icon</code> 修改 <code>tag_icon: false</code> 为 <code>true</code></li>
-</ul>
-<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"post-footer"</span>&gt;</span></span><br><span class="line">  {%- if post.tags and post.tags.length %}</span><br><span class="line">    {%- if theme.tag_icon %}</span><br><span class="line">      {%- set tag_indicate = '<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-tag"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>' %}</span><br><span class="line">    {% else %}</span><br><span class="line">      {%- set tag_indicate = '#' %}</span><br><span class="line">    {%- endif %}</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-tags"</span>&gt;</span></span><br><span class="line">      {%- for tag in post.tags.toArray() %}</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"{{ url_for(tag.path) }}"</span> <span class="attr">rel</span>=<span class="string">"tag"</span>&gt;</span>{{ tag_indicate }} {{ tag.name }}<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      {%- endfor %}</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  {%- endif %}</span><br><span class="line"></span><br><span class="line">  {{ partial('_partials/post/post-footer.swig', {}, {cache: theme.cache.enable}) }}</span><br><span class="line"></span><br><span class="line">  {{ post_nav(post) }}</span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>如图：<br>未修改：<img src="/hexo/theme/next/blog/hexo/theme/next/next-config/tag-example-1.png" style="zoom:80%;"> </p>
-<p>已修改：<img src="/hexo/theme/next/blog/hexo/theme/next/next-config/tag-example-2.png" style="zoom:80%;"></p>
-<hr>
-<h3 id="🌟增加文章字数统计及阅读时长功能"><a href="#🌟增加文章字数统计及阅读时长功能" class="headerlink" title="🌟增加文章字数统计及阅读时长功能"></a>🌟增加文章字数统计及阅读时长功能</h3><ul>
-<li>安装插件 <code>hexo-wordcount</code></li>
-</ul>
-<figure class="highlight applescript"><table><tbody><tr><td class="code"><pre><span class="line">npm install hexo-<span class="built_in">word</span>-counter  <span class="comment">--save</span></span><br><span class="line">hexo clean</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>站点配置文件<code>_config.yml</code> 中添加 </li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># word_count</span></span><br><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude_codeblock:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">  <span class="attr">wpm:</span> <span class="number">275</span></span><br><span class="line">  <span class="attr">suffix:</span> <span class="string">"mins."</span></span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>在主题配置文件<code>_config.next.yml</code> 中搜索 <code>symbols_count_time</code>, 修改如下:</li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">item_text_total:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟配置顶部加载条"><a href="#🌟配置顶部加载条" class="headerlink" title="🌟配置顶部加载条"></a>🌟配置顶部加载条</h3><ul>
-<li>在主题配置文件<code>_config.next.yml</code> 中搜索 <code>pace</code>, 修改如下:</li>
-</ul>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># For more information: https://github.com/CodeByZach/pace</span></span><br><span class="line"><span class="attr">pace:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># All available colors:</span></span><br><span class="line">  <span class="comment"># black | blue | green | orange | pink | purple | red | silver | white | yellow</span></span><br><span class="line">  <span class="attr">color:</span> <span class="string">pink</span></span><br><span class="line">  <span class="comment"># All available themes:</span></span><br><span class="line">  <span class="comment"># big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple</span></span><br><span class="line">  <span class="comment"># corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">corner-indicator</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h3 id="🌟图片放大显示"><a href="#🌟图片放大显示" class="headerlink" title="🌟图片放大显示"></a>🌟图片放大显示</h3><blockquote>
-<p>NexT <code>集成了多种图像显示工具，包括</code> FancyBox<code>、</code>MediumZoom<code>。当前使用</code> fancybox</p>
-<p>注意：不要同时启用 <code>fancybox</code> 和 <code>mediumzoom</code></p>
-</blockquote>
-<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.</span></span><br><span class="line"><span class="comment"># For more information: https://fancyapps.com/fancybox/</span></span><br><span class="line"><span class="attr">fancybox:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Medium Zoom is a JavaScript library for zooming images like Medium.</span></span><br><span class="line"><span class="comment"># Warning: Do not enable both `fancybox` and `mediumzoom`.</span></span><br><span class="line"><span class="comment"># For more information: https://medium-zoom.francoischalifour.com</span></span><br><span class="line"><span class="attr">mediumzoom:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
 ]]></content>
       <categories>
         <category>hexo</category>
-        <category>theme</category>
-        <category>next</category>
       </categories>
       <tags>
         <tag>博客</tag>
         <tag>hexo</tag>
+        <tag>GitHub Actions</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hexo NexT 主题部署</title>
+    <title>Hexo NexT 主题部署及配置</title>
     <url>/hexo/theme/next/blog/hexo/theme/next/next-deploy/</url>
-    <content><![CDATA[<p>NexT 8.x 主题部署</p>
+    <content><![CDATA[<p>NexT 8.x 主题部署，配置，优化</p>
 <span id="more"></span>
 
 <ul>
 <li>Hexo: 6.3.0</li>
 <li>NexT: 8.14.0</li>
 </ul>
-<blockquote>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><blockquote>
 <p>NexT 在 8. 以后支持 npm 安装和 git 安装</p>
 </blockquote>
 <div class="tabs" id="fourth-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#fourth-unique-name-1">npm 安装</a></li><li class="tab"><a href="#fourth-unique-name-2">git 安装</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fourth-unique-name-1"><p>使用 npm 安装后 _config.yml 在 node_modules/hexo-theme-next/_config.yml</p>
@@ -519,6 +327,200 @@
 </blockquote>
 <figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">cp .<span class="regexp">/node_modules/</span>hexo-theme-<span class="keyword">next</span><span class="regexp">/_config.yml ./</span>_config.<span class="keyword">next</span>.yaml.bak</span><br><span class="line">cp .<span class="regexp">/node_modules/</span>hexo-theme-<span class="keyword">next</span><span class="regexp">/_config.yml ./</span>_config.<span class="keyword">next</span>.yml</span><br><span class="line"></span><br><span class="line">cp .<span class="regexp">/_config.next.yaml.bak ./</span>node_modules<span class="regexp">/hexo-theme-next/</span>_config.yml</span><br></pre></td></tr></tbody></table></figure>
 
+<hr>
+<h3 id="配置及优化"><a href="#配置及优化" class="headerlink" title="配置及优化"></a>配置及优化</h3><p>参考网站：</p>
+<ul>
+<li><a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT</a></li>
+<li><a href="https://theme-next.js.org/docs/getting-started/">NexT (theme-next.js.org)</a></li>
+<li><a href="https://theme-next.js.org/highlight/">代码高亮 Highlight (theme-next.js.org)</a></li>
+</ul>
+<hr>
+<h4 id="阅读全文"><a href="#阅读全文" class="headerlink" title="阅读全文"></a>阅读全文</h4><p>NexT 提供三种方式来控制文章在首页的显示方式。 也就是说，在首页显示文章的摘录并显示 <strong>阅读全文</strong> 按钮，可以通过以下方法：</p>
+<ol>
+<li><p>在文章中使用 <code>&lt;!-- more --&gt;</code> 手动进行截断，Hexo 提供的方式 <strong>推荐</strong></p>
+</li>
+<li><p>在文章的 <a href="https://hexo.io/docs/front-matter.html">front-matter</a> 中添加 <code>description</code>，并提供文章摘录</p>
+</li>
+<li><p>自动形成摘要，在 <strong>主题配置文件</strong> 中添加：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>默认截取的长度为 <code>150</code> 字符，可以根据需要自行设定</p>
+</li>
+</ol>
+<blockquote>
+<p>建议使用 <code>&lt;!-- more --&gt;</code>（即第一种方式），除了可以精确控制需要显示的摘录内容以外， 这种方式也可以让 Hexo 中的插件更好的识别。</p>
+</blockquote>
+<hr>
+<h4 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h4><p>安装插件 <code>hexo-generator-searchdb</code></p>
+<figure class="highlight ada"><table><tbody><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>修改站点配置文件<code>_config.yml</code>，新增以下内容</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Local earch</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>在主题配置文件<code>_config.yml</code> 搜索 <code>local_search</code></p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">#如果自动，则通过更改输入触发搜索。</span></span><br><span class="line">  <span class="comment">#如果手动，则按回车键或搜索按钮触发搜索。</span></span><br><span class="line">  <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">  <span class="comment">#显示每篇文章的前n个结果，通过设置为-1显示所有结果</span></span><br><span class="line">  <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment">#将html字符串转换为可读字符串。</span></span><br><span class="line">  <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># 加载页面时预加载搜索数据。</span></span><br><span class="line">  <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="浏览进度"><a href="#浏览进度" class="headerlink" title="浏览进度"></a>浏览进度</h4><ul>
+<li>在主题配置文件<code>_config.yml</code> 中搜索 <code>scrollpercent</code> 修改 <code>footer.powered</code> 值为 <code>false</code></li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="comment"># 启用回到顶部</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># true:sidebar 底部显示，</span></span><br><span class="line">  <span class="comment"># false: 右下角显示</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 开启浏览百分比标签</span></span><br><span class="line">  <span class="attr">scrollpercent:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="网站图标"><a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h4><ul>
+<li>准备一张（32 * 32）的 ico 图标，png 格式也可以，命名为 <code>favicon</code>。</li>
+<li>然后把图标放在 <code>/themes/hexo-theme-next/source/images</code> 里</li>
+<li>在主题配置文件<code>_config.yml</code> 中搜索 <code>favicon</code> 修改 <code>favicon.small</code> 和 <code>favicon.medium</code> 值为 <code>images/favicon.png</code></li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="comment">#small: /images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="comment">#medium: /images/favicon-32x32-next.png</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /images/manifest.json</span></span><br><span class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="标签图标"><a href="#标签图标" class="headerlink" title="标签图标"></a>标签图标</h4><ul>
+<li>修改模板 <code>/themes/hexo-theme-next/layout/_macro/post.swig</code> 搜索 <code>rel="tag"</code> 如图：</li>
+<li>网上的教程大部分都是让替换 <code>rel="tag"&gt;#</code> 但其实新版本已经支持了，如图就是新版本的代码，</li>
+<li>只需要在主题配置文件<code>_config.yml</code> 中搜索 <code>tag_icon</code> 修改 <code>tag_icon: false</code> 为 <code>true</code></li>
+</ul>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"post-footer"</span>&gt;</span></span><br><span class="line">  {%- if post.tags and post.tags.length %}</span><br><span class="line">    {%- if theme.tag_icon %}</span><br><span class="line">      {%- set tag_indicate = '<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-tag"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>' %}</span><br><span class="line">    {% else %}</span><br><span class="line">      {%- set tag_indicate = '#' %}</span><br><span class="line">    {%- endif %}</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-tags"</span>&gt;</span></span><br><span class="line">      {%- for tag in post.tags.toArray() %}</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"{{ url_for(tag.path) }}"</span> <span class="attr">rel</span>=<span class="string">"tag"</span>&gt;</span>{{ tag_indicate }} {{ tag.name }}<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      {%- endfor %}</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  {%- endif %}</span><br><span class="line"></span><br><span class="line">  {{ partial('_partials/post/post-footer.swig', {}, {cache: theme.cache.enable}) }}</span><br><span class="line"></span><br><span class="line">  {{ post_nav(post) }}</span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>如图：<br>未修改：<img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/tag-example-1.png" style="zoom:80%;"> </p>
+<p>已修改：<img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/tag-example-2.png" style="zoom:80%;"></p>
+<hr>
+<h4 id="阅读进度"><a href="#阅读进度" class="headerlink" title="阅读进度"></a>阅读进度</h4><p>阅读进度有两种展示方式，</p>
+<ol>
+<li>在回到首页的按钮上直接显示百分比</li>
+<li>在顶部或底部增加进度条，</li>
+</ol>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Back to top in sidebar.</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Scroll percent label in b2t button.</span></span><br><span class="line">  <span class="attr">scrollpercent:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Reading progress bar</span></span><br><span class="line"><span class="attr">reading_progress:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Available values: left | right</span></span><br><span class="line">  <span class="attr">start_at:</span> <span class="string">left</span></span><br><span class="line">  <span class="comment"># Available values: top | bottom</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">top</span></span><br><span class="line">  <span class="attr">reversed:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">color:</span> <span class="string">"#37c6c0"</span></span><br><span class="line">  <span class="attr">height:</span> <span class="string">3px</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="顶部加载条"><a href="#顶部加载条" class="headerlink" title="顶部加载条"></a>顶部加载条</h4><ul>
+<li>在主题配置文件<code>_config.next.yml</code> 中搜索 <code>pace</code>, 修改如下:</li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># For more information: https://github.com/CodeByZach/pace</span></span><br><span class="line"><span class="attr">pace:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># All available colors:</span></span><br><span class="line">  <span class="comment"># black | blue | green | orange | pink | purple | red | silver | white | yellow</span></span><br><span class="line">  <span class="attr">color:</span> <span class="string">pink</span></span><br><span class="line">  <span class="comment"># All available themes:</span></span><br><span class="line">  <span class="comment"># big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple</span></span><br><span class="line">  <span class="comment"># corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">corner-indicator</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="代码块配置"><a href="#代码块配置" class="headerlink" title="代码块配置"></a>代码块配置</h4><p>参考：<a href="https://theme-next.js.org/highlight/">代码高亮示例 | Highlight (theme-next.js.org)</a></p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># All available themes: https://theme-next.js.org/highlight/</span></span><br><span class="line">  <span class="attr">theme:</span></span><br><span class="line">    <span class="comment"># light: default</span></span><br><span class="line">    <span class="attr">light:</span> <span class="string">atom-one-light</span></span><br><span class="line">    <span class="attr">dark:</span> <span class="string">atom-one-dark</span></span><br><span class="line">  <span class="attr">prism:</span></span><br><span class="line">    <span class="attr">light:</span> <span class="string">prism</span></span><br><span class="line">    <span class="attr">dark:</span> <span class="string">prism-dark</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">flat</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="Github图标"><a href="#Github图标" class="headerlink" title="Github图标"></a>Github 图标</h4><p>在首页右上角显示 <code>Github</code> 图标，点击图标跳转 <code>Github</code> 主页</p>
+<blockquote>
+<p>在主题配置文件<code>_config.next.yml</code> 中搜索 <code>github_banner</code>, 修改如下:</p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># `Follow me on GitHub` banner in the top-right corner.</span></span><br><span class="line"><span class="attr">github_banner:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">permalink:</span> <span class="string">https://github.com/yourname</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">Follow</span> <span class="string">me</span> <span class="string">on</span> <span class="string">GitHub</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="图片放大显示"><a href="#图片放大显示" class="headerlink" title="图片放大显示"></a>图片放大显示</h4><blockquote>
+<p>NexT <code>集成了多种图像显示工具，包括</code> FancyBox<code>、</code>MediumZoom<code>。当前使用</code> fancybox<br>注意：不要同时启用 <code>fancybox</code> 和 <code>mediumzoom</code><br><strong>!!! 关闭懒加载</strong>  <code>lazyload: false</code> 懒加载会引起图片丢失</p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.</span></span><br><span class="line"><span class="comment"># For more information: https://fancyapps.com/fancybox/</span></span><br><span class="line"><span class="attr">fancybox:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Medium Zoom is a JavaScript library for zooming images like Medium.</span></span><br><span class="line"><span class="comment"># Warning: Do not enable both `fancybox` and `mediumzoom`.</span></span><br><span class="line"><span class="comment"># For more information: https://medium-zoom.francoischalifour.com</span></span><br><span class="line"><span class="attr">mediumzoom:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="字体大小调整"><a href="#字体大小调整" class="headerlink" title="字体大小调整"></a>字体大小调整</h4><ul>
+<li>自定义样式文件</li>
+<li> NexT 配置文件 打开自定义文件的路径</li>
+</ul>
+<blockquote>
+<p>参考：<a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html#Examples-of-Modifying-Style">自定义文件 | NexT (theme-next.js.org)</a></p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="attr">variable:</span> <span class="string">source/_data/variables.styl</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>在站点根目录中创建和编辑并添加变量：<code>source/_data/variables.styl</code></li>
+</ul>
+<blockquote>
+<p>可以复制 <code>node_modules\hexo-theme-next\source\css\_variables\base.styl</code> 主题下的变量</p>
+</blockquote>
+<figure class="highlight less"><table><tbody><tr><td class="code"><pre><span class="line">$<span class="selector-tag">font-size-large</span>          = <span class="number">1em</span>;</span><br><span class="line">$<span class="selector-tag">font-size-larger</span>         = <span class="number">1em</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>也可以 在主题配置文件<code>_config.yml</code> 文件中搜索 <code>font</code></li>
+<li>配置 <code>font.enable:true</code>, 配置 <code>xx.external:false</code> 要不然博客访问速度变慢 </li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">host:</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Lato</span></span><br><span class="line">    <span class="attr">size:</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="不蒜子-技术器"><a href="#不蒜子-技术器" class="headerlink" title="[不蒜子]技术器"></a>[不蒜子] 技术器</h4><p><code>NexT</code> 主题已集成了不蒜子的访客人数和文章阅读统计功能</p>
+<blockquote>
+<p>设置 <code>enable</code> 为 <code>true</code> 即可。</p>
+<ul>
+<li>在首页显示文章的阅读次数</li>
+<li>点击全文阅读显示阅读次数</li>
+<li>在底部可以看见访客人数和文章阅读次数 </li>
+</ul>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Show Views / Visitors of the website / page with busuanzi.</span></span><br><span class="line"><span class="comment"># For more information: http://ibruce.info/2015/04/04/busuanzi/</span></span><br><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_visitors:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_visitors_icon:</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">total_views:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_views_icon:</span> <span class="string">fa</span> <span class="string">fa-eye</span></span><br><span class="line">  <span class="attr">post_views:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post_views_icon:</span> <span class="string">far</span> <span class="string">fa-eye</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="文章字数统计及阅读时长"><a href="#文章字数统计及阅读时长" class="headerlink" title="文章字数统计及阅读时长"></a>文章字数统计及阅读时长</h4><ul>
+<li>安装插件 <code>hexo-wordcount</code></li>
+</ul>
+<figure class="highlight applescript"><table><tbody><tr><td class="code"><pre><span class="line">npm install hexo-<span class="built_in">word</span>-counter  <span class="comment">--save</span></span><br><span class="line">hexo clean</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>站点配置文件<code>_config.yml</code> 中添加 </li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># word_count</span></span><br><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude_codeblock:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">  <span class="attr">wpm:</span> <span class="number">275</span></span><br><span class="line">  <span class="attr">suffix:</span> <span class="string">"mins."</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>在主题配置文件<code>_config.next.yml</code> 中搜索 <code>symbols_count_time</code>, 修改如下:</li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">item_text_total:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="隐藏底部-由-Hexo-amp-NexT-Gemini-强力驱动-文字"><a href="#隐藏底部-由-Hexo-amp-NexT-Gemini-强力驱动-文字" class="headerlink" title="隐藏底部 由 Hexo &amp; NexT.Gemini 强力驱动 文字"></a>隐藏底部 <code>由 Hexo &amp; NexT.Gemini 强力驱动</code> 文字</h4><ul>
+<li>在主题配置文件<code>_config.yml</code> 中搜索 <code>footer</code> 修改 <code>footer.powered</code> 值为 <code>false</code></li>
+</ul>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="comment">#...</span></span><br><span class="line">  <span class="comment"># Powered by Hexo &amp; NexT</span></span><br><span class="line">  <span class="attr">powered:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="Gitalk-评论系统"><a href="#Gitalk-评论系统" class="headerlink" title="Gitalk 评论系统"></a>Gitalk 评论系统</h4><p>在 GitHub 上申请一个 OAuth Application，</p>
+<p>入口在 <code>【Settings】</code> -&gt; <code>【Developer settings】</code> -&gt; <code>【OAuth Apps】</code> -&gt; <code>【New OAuth App】</code>，或者直接使用这个 <a href="https://github.com/settings/applications/new"></a><a href="https://github.com/settings/applications/new">Register a new OAuth application</a></p>
+<p>参考：<br>[<a href="https://hexo-next.readthedocs.io/zh_CN/latest/next/advanced/gitalk-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">Gitalk] 评论系统 - Hexo-NexT</a><br><a href="https://syvshc.github.io/2021-03-05-enable-gitalk/">为博客添加 Gitalk 评论区 | 无锤乙醇 (syvshc.github.io)</a></p>
+<blockquote>
+<ul>
+<li><code>Application name</code>：应用名</li>
+<li><code>Homepage URL</code>：网站地址</li>
+<li><code>Application description</code>：应用描述</li>
+<li><code>Authorization callback URL</code>：网站地址 (<strong>回调地址，重要！！！</strong>)</li>
+</ul>
+</blockquote>
+<img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/gitalk-1.png" style="zoom:60%;">
+
+<p>注册后，记录下应用 id 以及密钥，如果没有显示密钥需要手动生成一下</p>
+<img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/gitalk-2.png" style="zoom:60%;">
+
+<img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/gitalk-3.png" style="zoom:60%;">
+
+<p>启用 <code>Gitalk</code> 作为评论系统</p>
+<blockquote>
+<ul>
+<li><code>comments.active</code> 字段配置为 <code>gitalk</code></li>
+<li><code>comments.lazyload</code> 字段配置为 <code>true</code></li>
+</ul>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Multiple Comment System Support</span></span><br><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Available values: tabs | buttons</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">tabs</span></span><br><span class="line">  <span class="comment"># Choose a comment system to be displayed by default.</span></span><br><span class="line">  <span class="comment"># Available values: disqus | disqusjs | changyan | livere | gitalk | utterances</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">gitalk</span></span><br><span class="line">  <span class="comment"># Setting `true` means remembering the comment system selected by the visitor.</span></span><br><span class="line">  <span class="attr">storage:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Lazyload all comment systems.</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Modify texts or order for any naves, here are some examples.</span></span><br><span class="line">  <span class="attr">nav:</span></span><br><span class="line">    <span class="comment">#disqus:</span></span><br><span class="line">    <span class="comment">#  text: Load Disqus</span></span><br><span class="line">    <span class="comment">#  order: -1</span></span><br><span class="line">    <span class="comment">#gitalk:</span></span><br><span class="line">    <span class="comment">#  order: -2</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>配置 <code>gitalk</code> 信息</p>
+<blockquote>
+<p><code>NexT8</code> 内置了 <code>gitalk</code>, 在 <code>_config.next.yml</code> 中搜索 <code>gitalk</code> 即可看到</p>
+<ul>
+<li>设置 <code>enable</code> 为 <code>true</code></li>
+<li><code>github_id</code> 填入 <code>github</code> 帐号</li>
+<li><code>repo</code> 填入 <code>github</code> 仓库名（<strong>注意：是仓库名不是仓库地址</strong>），评论将会以 <code>issues</code> 形式保存在该仓库下</li>
+<li><code>client_id</code> 填入注册生成的值</li>
+<li><code>client_secret</code> 填入注册生成的值</li>
+<li><code>admin_user</code> 填入 <code>github</code> 帐号，用于初始化评论账户</li>
+</ul>
+<p>注：默认 <code>proxy</code> 访问报错 <code>Error: Request failed with status code 403</code>,<br>替换为 <code>https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token</code></p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Gitalk</span></span><br><span class="line"><span class="comment"># For more information: https://gitalk.github.io</span></span><br><span class="line"><span class="attr">gitalk:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github_id:</span> <span class="comment"># GitHub repo owner</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># Repository name to store issues</span></span><br><span class="line">  <span class="attr">client_id:</span> <span class="comment"># GitHub Application Client ID</span></span><br><span class="line">  <span class="attr">client_secret:</span> <span class="comment"># GitHub Application Client Secret</span></span><br><span class="line">  <span class="attr">admin_user:</span> <span class="comment"># GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span></span><br><span class="line">  <span class="attr">distraction_free_mode:</span> <span class="literal">true</span> <span class="comment"># Facebook-like distraction free mode</span></span><br><span class="line">  <span class="comment"># When the official proxy is not available, you can change it to your own proxy address</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token</span> <span class="comment"># This is official proxy address</span></span><br><span class="line">  <span class="comment"># Gitalk's display language depends on user's browser or system environment</span></span><br><span class="line">  <span class="comment"># If you want everyone visiting your site to see a uniform language, you can set a force language value</span></span><br><span class="line">  <span class="comment"># Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<hr>
 ]]></content>
       <categories>
         <category>hexo</category>
