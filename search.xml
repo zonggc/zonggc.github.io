@@ -3,7 +3,8 @@
   <entry>
     <title>主页</title>
     <url>/uncategorized/home/</url>
-    <content><![CDATA[<h1 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h1>]]></content>
+    <content><![CDATA[<p>说点啥呢</p>
+]]></content>
   </entry>
   <entry>
     <title>docker 常用命令</title>
@@ -476,9 +477,11 @@
 <figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="comment">#...</span></span><br><span class="line">  <span class="comment"># Powered by Hexo &amp; NexT</span></span><br><span class="line">  <span class="attr">powered:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
-<h4 id="Gitalk-评论系统"><a href="#Gitalk-评论系统" class="headerlink" title="Gitalk 评论系统"></a>Gitalk 评论系统</h4><p>在 GitHub 上申请一个 OAuth Application，</p>
-<p>入口在 <code>【Settings】</code> -&gt; <code>【Developer settings】</code> -&gt; <code>【OAuth Apps】</code> -&gt; <code>【New OAuth App】</code>，或者直接使用这个 <a href="https://github.com/settings/applications/new"></a><a href="https://github.com/settings/applications/new">Register a new OAuth application</a></p>
-<p>参考：<br>[<a href="https://hexo-next.readthedocs.io/zh_CN/latest/next/advanced/gitalk-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">Gitalk] 评论系统 - Hexo-NexT</a><br><a href="https://syvshc.github.io/2021-03-05-enable-gitalk/">为博客添加 Gitalk 评论区 | 无锤乙醇 (syvshc.github.io)</a></p>
+<h4 id="Gitalk-评论系统"><a href="#Gitalk-评论系统" class="headerlink" title="Gitalk 评论系统"></a>Gitalk 评论系统</h4><p>官网：<a href="https://gitalk.github.io/">Gitalk Demo | Aotu.io「凹凸实验室」</a></p>
+<p>参考：<br><a href="https://hexo-next.readthedocs.io/zh_CN/latest/next/advanced/gitalk-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">Gitalk] 评论系统 - Hexo-NexT</a><br><a href="https://syvshc.github.io/2021-03-05-enable-gitalk/">为博客添加 Gitalk 评论区 | 无锤乙醇 (syvshc.github.io)</a></p>
+<ul>
+<li> 在 GitHub 上申请一个 OAuth Application，<br>入口 <code>Settings</code> -&gt; <code>Developer settings</code> -&gt; <code>OAuth Apps</code> -&gt; <code>New OAuth App</code>，<br>或者直接使用这个 <a href="https://github.com/settings/applications/new"></a><a href="https://github.com/settings/applications/new">Register a new OAuth application</a></li>
+</ul>
 <blockquote>
 <ul>
 <li><code>Application name</code>：应用名</li>
@@ -489,12 +492,16 @@
 </blockquote>
 <img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/gitalk-1.png" style="zoom:60%;">
 
-<p>注册后，记录下应用 id 以及密钥，如果没有显示密钥需要手动生成一下</p>
+<ul>
+<li> 注册后，记录下应用 id 以及密钥，如果没有显示密钥需要手动生成一下</li>
+</ul>
 <img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/gitalk-2.png" style="zoom:60%;">
 
 <img src="/hexo/theme/next/blog/hexo/theme/next/next-deploy/gitalk-3.png" style="zoom:60%;">
 
-<p>启用 <code>Gitalk</code> 作为评论系统</p>
+<ul>
+<li>启用 <code>Gitalk</code> 作为评论系统</li>
+</ul>
 <blockquote>
 <ul>
 <li><code>comments.active</code> 字段配置为 <code>gitalk</code></li>
@@ -503,7 +510,9 @@
 </blockquote>
 <figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Multiple Comment System Support</span></span><br><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Available values: tabs | buttons</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">tabs</span></span><br><span class="line">  <span class="comment"># Choose a comment system to be displayed by default.</span></span><br><span class="line">  <span class="comment"># Available values: disqus | disqusjs | changyan | livere | gitalk | utterances</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">gitalk</span></span><br><span class="line">  <span class="comment"># Setting `true` means remembering the comment system selected by the visitor.</span></span><br><span class="line">  <span class="attr">storage:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Lazyload all comment systems.</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Modify texts or order for any naves, here are some examples.</span></span><br><span class="line">  <span class="attr">nav:</span></span><br><span class="line">    <span class="comment">#disqus:</span></span><br><span class="line">    <span class="comment">#  text: Load Disqus</span></span><br><span class="line">    <span class="comment">#  order: -1</span></span><br><span class="line">    <span class="comment">#gitalk:</span></span><br><span class="line">    <span class="comment">#  order: -2</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>配置 <code>gitalk</code> 信息</p>
+<ul>
+<li>配置 <code>gitalk</code> 信息</li>
+</ul>
 <blockquote>
 <p><code>NexT8</code> 内置了 <code>gitalk</code>, 在 <code>_config.next.yml</code> 中搜索 <code>gitalk</code> 即可看到</p>
 <ul>
@@ -518,7 +527,18 @@
 </blockquote>
 <figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Gitalk</span></span><br><span class="line"><span class="comment"># For more information: https://gitalk.github.io</span></span><br><span class="line"><span class="attr">gitalk:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github_id:</span> <span class="comment"># GitHub repo owner</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># Repository name to store issues</span></span><br><span class="line">  <span class="attr">client_id:</span> <span class="comment"># GitHub Application Client ID</span></span><br><span class="line">  <span class="attr">client_secret:</span> <span class="comment"># GitHub Application Client Secret</span></span><br><span class="line">  <span class="attr">admin_user:</span> <span class="comment"># GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span></span><br><span class="line">  <span class="attr">distraction_free_mode:</span> <span class="literal">true</span> <span class="comment"># Facebook-like distraction free mode</span></span><br><span class="line">  <span class="comment"># When the official proxy is not available, you can change it to your own proxy address</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token</span> <span class="comment"># This is official proxy address</span></span><br><span class="line">  <span class="comment"># Gitalk's display language depends on user's browser or system environment</span></span><br><span class="line">  <span class="comment"># If you want everyone visiting your site to see a uniform language, you can set a force language value</span></span><br><span class="line">  <span class="comment"># Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></tbody></table></figure>
 
+<blockquote>
+<p>配置完成后，进行在线部署，<br>随便选一篇博文，在最下方评论区域，登录一下 <code>github</code> 完成初始化.</p>
+</blockquote>
+<ul>
+<li>隐藏评论框</li>
+</ul>
+<p>设置 <code>gitalk</code> 评论系统后，将会在每篇文章末尾添加评论框，而对于标签页 / 类别页等不需要评论的文章，可在 <code>front-matter</code> 设置属性进行隐藏</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
 
+<div class="note warning"><p>NetWork Error</p>
+<p><code>gitalk.proxy</code> 需要更换</p>
+</div>
 
 <hr>
 ]]></content>
